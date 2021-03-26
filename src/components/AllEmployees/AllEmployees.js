@@ -10,7 +10,7 @@ export default function AllEmployees() {
 	const [employee, setEmployee] = useState([]);
 
 	useEffect(() => {
-		api.get("https://randomuser.me/api/").then((res) => {
+		api.get("https://randomuser.me/api/?results=30").then((res) => {
 			console.log(res.data.results);
 			setEmployee(res.data.results);
 		});
@@ -50,7 +50,7 @@ export default function AllEmployees() {
 						<th>DOB</th>
 					</tr>
 					{employee.map((item) => (
-						<tr key={item.id}>
+						<tr key={item.login.uuid}>
 							<td>
 								<img src={item.picture.medium} alt="" />
 							</td>
