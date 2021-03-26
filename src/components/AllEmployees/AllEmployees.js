@@ -16,6 +16,14 @@ export default function AllEmployees() {
 		});
 	}, []);
 
+    const newDate = (date) =>{
+        let x = new Date(date)
+
+        return x.toLocaleDateString()
+    }
+
+    console.log(newDate("1951-11-10T10:05:30.760Z"));
+
 	console.log(employee, "here");
 
 	return (
@@ -37,14 +45,27 @@ export default function AllEmployees() {
 					<tr>
 						<th>Image</th>
 						<th>Name</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>DOB</th>
+						<th>Phone</th>
+						<th>Email</th>
+						<th>DOB</th>
 					</tr>
 					{employee.map((item) => (
 						<tr key={item.id}>
-							<td>{item.name.first}</td>
-                            <td>{item.name.first} {item.name.last}</td>
+							<td>
+								<img src={item.picture.medium} alt="" />
+							</td>
+							<td>
+								{item.name.first} {item.name.last}
+							</td>
+                            <td>
+								{item.cell} 
+							</td>
+                            <td>
+								{item.email} 
+							</td>
+                            <td>
+								{newDate(item.dob.date)} 
+							</td>
 						</tr>
 					))}
 				</table>
