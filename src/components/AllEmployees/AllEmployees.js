@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./AllEmployee.css";
 import axios from "axios";
-import SearchEmployees from '../SearchEmployees/SearchEmployees'
+import SearchEmployees from "../SearchEmployees/SearchEmployees";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import NavBar from '../NavBar/NavBar'
 
 const api = axios.create({
 	baseUrl: "https://randomuser.me/api/",
@@ -27,11 +29,11 @@ export default function AllEmployees() {
 
 	return (
 		<div>
+		
 			<div className="max-w-screen-lg bg-indigo-500 shadow-2xl rounded-lg mx-auto text-center py-12 mt-4">
 				<h2 className="text-3xl leading-9 font-bold tracking-tight text-white sm:text-4xl sm:leading-10">
 					Employee Directory
 				</h2>
-                <SearchEmployees />
 				<div className="mt-8 flex justify-center">
 					<div className="inline-flex rounded-md bg-white shadow"></div>
 				</div>
@@ -51,7 +53,7 @@ export default function AllEmployees() {
 						{employee.map((item) => (
 							<tr key={item.login.uuid}>
 								<td className=" border border-indigo-500  w-1/4">
-									<img  src={item.picture.large} alt="" />
+									<img src={item.picture.large} alt="" />
 								</td>
 								<td className="border border-indigo-500  w-1/4">
 									{item.name.first} {item.name.last}
