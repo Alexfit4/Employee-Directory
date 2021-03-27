@@ -1,13 +1,11 @@
-
-import NavBar from '../src/components/NavBar/NavBar'
 import './App.css';
-import AllEmployees from './components/AllEmployees/AllEmployees';
+import SearchEmployee from './components/SearchEmployees/SearchEmployees'
 
 
 function App() {
   return (
     <div className="App">
-    <NavBar />
+    <SearchEmployee />
     </div>
   );
 }

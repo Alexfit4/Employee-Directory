@@ -72,4 +72,8 @@ export default function AllEmployees() {
 			</div>
 		</div>
 	);
+
+
 }
+
+
