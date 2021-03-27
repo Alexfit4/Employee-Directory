@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./AllEmployee.css";
 import axios from "axios";
+import SearchEmployees from '../SearchEmployees/SearchEmployees'
 
 const api = axios.create({
 	baseUrl: "https://randomuser.me/api/",
@@ -30,6 +31,7 @@ export default function AllEmployees() {
 				<h2 className="text-3xl leading-9 font-bold tracking-tight text-white sm:text-4xl sm:leading-10">
 					Employee Directory
 				</h2>
+                <SearchEmployees />
 				<div className="mt-8 flex justify-center">
 					<div className="inline-flex rounded-md bg-white shadow"></div>
 				</div>
