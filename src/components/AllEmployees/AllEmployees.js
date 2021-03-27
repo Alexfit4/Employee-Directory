@@ -16,13 +16,13 @@ export default function AllEmployees() {
 		});
 	}, []);
 
-    const newDate = (date) =>{
-        let x = new Date(date)
+	const newDate = (date) => {
+		let x = new Date(date);
 
-        return x.toLocaleDateString()
-    }
+		return x.toLocaleDateString();
+	};
 
-    console.log(newDate("1951-11-10T10:05:30.760Z"));
+	console.log(newDate("1951-11-10T10:05:30.760Z"));
 
 	console.log(employee, "here");
 
@@ -34,40 +34,35 @@ export default function AllEmployees() {
 				</h2>
 				<div className="mt-8 flex justify-center">
 					<div className="inline-flex rounded-md bg-white shadow">
-						<a href="#" className="text-gray-700 font-bold py-2 px-6">
-							Start
-						</a>
 					</div>
 				</div>
 			</div>
 			<div className="employeeList">
-				<table>
-					<tr>
-						<th>Image</th>
-						<th>Name</th>
-						<th>Phone</th>
-						<th>Email</th>
-						<th>DOB</th>
-					</tr>
-					{employee.map((item) => (
-						<tr key={item.login.uuid}>
-							<td>
-								<img src={item.picture.medium} alt="" />
-							</td>
-							<td>
-								{item.name.first} {item.name.last}
-							</td>
-                            <td>
-								{item.cell} 
-							</td>
-                            <td>
-								{item.email} 
-							</td>
-                            <td>
-								{newDate(item.dob.date)} 
-							</td>
+				<table className="table-auto border-separate border border-green-800">
+					<thead>
+						<tr>
+							<th className="border border-indigo-500  w-1/4">Image</th>
+							<th className="border border-indigo-500  w-1/4">Name</th>
+							<th className="border border-indigo-500  w-1/4">Phone</th>
+							<th className="border border-indigo-500  w-1/4">Email</th>
+							<th className="border border-indigo-500  w-1/4">DOB</th>
 						</tr>
-					))}
+					</thead>
+					<tbody>
+						{employee.map((item) => (
+							<tr key={item.login.uuid}>
+								<td className="border border-indigo-500  w-1/4" >
+									<img src={item.picture.large} alt="" />
+								</td>
+								<td className="border border-indigo-500  w-1/4">
+									{item.name.first} {item.name.last}
+								</td>
+								<td className="border border-indigo-500  w-1/4">{item.cell}</td>
+								<td className="border border-indigo-500  w-1/4">{item.email}</td>
+								<td className="border border-indigo-500  w-1/4">{newDate(item.dob.date)}</td>
+							</tr>
+						))}
+					</tbody>
 				</table>
 			</div>
 		</div>
