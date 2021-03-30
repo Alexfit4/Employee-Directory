@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './SearchEmployees.css'
+import "./SearchEmployees.css";
 
 export default function SearchEmployees() {
 	const [employee, setEmployee] = useState([]);
@@ -30,6 +30,21 @@ export default function SearchEmployees() {
 		return employee.name.first.toUpperCase().indexOf(search.toUpperCase()) > -1;
 	};
 
+	const sortFunction = (employee) => {
+		let sortEmployee = [...employee].sort((a, b) => {
+			if (a.name.first < b.name.first) {
+				return -1;
+			}
+			if (a.name.first > b.name.first) {
+				return 1;
+			}
+			return 0;
+		});
+
+		console.log("here");
+		setEmployee(sortEmployee);
+	};
+
 	return (
 		<div>
 			<div className="max-w-screen-lg bg-indigo-500 shadow-2xl rounded-lg mx-auto text-center py-12 mt-4">
@@ -52,11 +67,7 @@ export default function SearchEmployees() {
 					id="recipients"
 					className="p-8 mt-6 lg:mt-0 rounded shadow bg-white"
 				>
-					<table
-						id="example"
-						className="stripe hover"
-						
-					>
+					<table id="example" className="stripe hover">
 						<thead>
 							<tr>
 								<th
@@ -65,7 +76,12 @@ export default function SearchEmployees() {
 								>
 									Image
 								</th>
-								<th className="border border-indigo-500  w-1/4">Name</th>
+								<th
+									onClick={() => sortFunction(employee)}
+									className="border border-indigo-500  w-1/4"
+								>
+									Name <i className="fas fa-arrow-down"></i>
+								</th>
 								<th className="border border-indigo-500  w-1/4">Phone</th>
 								<th className="border border-indigo-500  w-1/4">Email</th>
 								<th className="border border-indigo-500  w-1/4">DOB</th>
