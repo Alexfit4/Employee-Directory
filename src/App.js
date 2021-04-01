@@ -1,13 +1,17 @@
-import './App.css';
-import SearchEmployee from './components/SearchEmployees/SearchEmployees'
-
+import "./App.css";
+import SearchEmployee from "./components/SearchEmployees/SearchEmployees";
 
 function App() {
-  return (
-    <div className="App">
-    <SearchEmployee />
-    </div>
-  );
+	return (
+		<Router>
+			<div>
+				<Wrapper>
+					<Route exact path="/Employee-Directory" component={SearchEmployee} />
+				</Wrapper>
+				<Footer />
+			</div>
+		</Router>
+	);
 }
 
 export default App;
